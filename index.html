@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Waseem Hussain Bhat — Computer Science student, problem solver, and aspiring developer." />
+  <title>Waseem Hussain Bhat | Portfolio</title>
+  <style>
+    :root{
+      --bg:#0a0d14;
+      --panel:#111722;
+      --panel2:#161d2a;
+      --text:#f6f7fb;
+      --muted:#a8b0bf;
+      --accent:#7c6cff;
+      --accent2:#28d7b4;
+      --line:rgba(255,255,255,.10);
+      --shadow:0 24px 70px rgba(0,0,0,.32);
+      --radius:24px;
+      --max:1120px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(124,108,255,.16), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(40,215,180,.10), transparent 25%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(var(--max),92%);margin:auto}
+    header{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      backdrop-filter:blur(18px);
+      background:rgba(10,13,20,.68);
+      border-bottom:1px solid transparent;
+      transition:.3s;
+    }
+    header.scrolled{border-color:var(--line)}
+    nav{height:78px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-size:1.05rem;font-weight:800;letter-spacing:.02em}
+    .brand span{color:var(--accent)}
+    .navlinks{display:flex;gap:1.5rem;color:var(--muted);font-size:.94rem}
+    .navlinks a{transition:.25s}
+    .navlinks a:hover{color:var(--text)}
+    .menu{display:none;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer}
+    .hero{min-height:100vh;display:grid;place-items:center;padding:120px 0 70px}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:.6rem;
+      padding:.5rem .8rem;border:1px solid var(--line);border-radius:999px;
+      color:#d9ddff;background:rgba(124,108,255,.09);font-size:.82rem;font-weight:700;
+      margin-bottom:1.2rem
+    }
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--accent2);box-shadow:0 0 16px var(--accent2)}
+    h1{font-size:clamp(3rem,7vw,6rem);line-height:.95;letter-spacing:-.055em;margin-bottom:1.3rem}
+    h1 .gradient{background:linear-gradient(135deg,#fff 20%,#b9afff 52%,#65e8cf 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{font-size:1.15rem;color:var(--muted);max-width:680px}
+    .cta{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+      padding:.9rem 1.2rem;border-radius:14px;font-weight:750;border:1px solid var(--line);transition:.25s;
+    }
+    .btn.primary{background:var(--text);color:#0b0e13;border-color:transparent}
+    .btn.secondary{background:rgba(255,255,255,.03)}
+    .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .profile-wrap{position:relative;display:flex;justify-content:center}
+    .profile-card{
+      width:min(390px,88vw);padding:14px;border-radius:32px;
+      background:linear-gradient(145deg,rgba(255,255,255,.15),rgba(255,255,255,.035));
+      border:1px solid var(--line);box-shadow:var(--shadow);transform:rotate(2deg);
+    }
+    .profile-card img{
+      width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;
+      border-radius:24px;filter:saturate(.95) contrast(1.03);
+    }
+    .orb{
+      position:absolute;width:150px;height:150px;border-radius:50%;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      filter:blur(55px);opacity:.28;z-index:-1
+    }
+    section{padding:110px 0}
+    .section-head{margin-bottom:42px}
+    .kicker{color:var(--accent2);font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;font-weight:800;margin-bottom:.55rem}
+    h2{font-size:clamp(2.2rem,5vw,4rem);line-height:1;letter-spacing:-.045em}
+    .muted{color:var(--muted)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .card{
+      background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025));
+      border:1px solid var(--line);border-radius:var(--radius);padding:28px;
+    }
+    .about-text{font-size:1.05rem;color:#d6dbe7}
+    .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .fact strong{display:block;font-size:1.25rem;margin-bottom:.25rem}
+    .skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .skill{padding:22px;border-radius:20px;background:var(--panel);border:1px solid var(--line);transition:.25s}
+    .skill:hover{transform:translateY(-4px);border-color:rgba(124,108,255,.45)}
+    .skill-icon{font-size:1.6rem;margin-bottom:13px}
+    .skill h3{font-size:1rem;margin-bottom:.4rem}
+    .skill p{font-size:.9rem;color:var(--muted)}
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .project{min-height:230px;display:flex;flex-direction:column;justify-content:space-between}
+    .project-tag{font-size:.75rem;color:#cfcaff;margin-bottom:12px;font-weight:700}
+    .project h3{font-size:1.55rem;margin-bottom:.55rem}
+    .project p{color:var(--muted);max-width:60ch}
+    .project-footer{display:flex;justify-content:space-between;align-items:center;margin-top:24px}
+    .project-link{color:#dcd9ff;font-weight:700}
+    .timeline{border-left:1px solid var(--line);margin-left:10px;padding-left:26px}
+    .timeline-item{position:relative;padding-bottom:28px}
+    .timeline-item::before{
+      content:"";position:absolute;left:-33px;top:7px;width:12px;height:12px;border-radius:50%;
+      background:var(--accent);box-shadow:0 0 0 5px rgba(124,108,255,.13)
+    }
+    .timeline-item h3{font-size:1.15rem}
+    .contact{
+      display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;
+      padding:40px;border-radius:28px;background:linear-gradient(135deg,rgba(124,108,255,.15),rgba(40,215,180,.07));
+      border:1px solid var(--line)
+    }
+    .contact-links{display:flex;gap:12px;flex-wrap:wrap}
+    .contact-links a{padding:.8rem 1rem;border:1px solid var(--line);border-radius:14px;background:rgba(0,0,0,.16)}
+    footer{padding:30px 0 50px;color:var(--muted);font-size:.9rem}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+    .reveal.show{opacity:1;transform:none}
+    @media(max-width:900px){
+      .hero-grid,.about-grid{grid-template-columns:1fr}
+      .profile-wrap{order:-1}
+      .skills{grid-template-columns:repeat(2,1fr)}
+      .contact{grid-template-columns:1fr}
+      .navlinks{
+        position:absolute;top:78px;left:4%;right:4%;display:none;flex-direction:column;
+        padding:16px;background:rgba(17,23,34,.98);border:1px solid var(--line);border-radius:18px
+      }
+      .navlinks.open{display:flex}
+      .menu{display:block}
+    }
+    @media(max-width:620px){
+      .skills,.projects,.facts{grid-template-columns:1fr}
+      section{padding:84px 0}
+      .hero{padding-top:105px}
+      .profile-card{width:min(320px,90vw)}
+      .cta .btn{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="container">
+      <nav>
+        <a class="brand" href="#home">Waseem<span>.</span></a>
+        <button class="menu" id="menu" aria-label="Open menu">☰</button>
+        <div class="navlinks" id="navlinks">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow"><span class="dot"></span> Computer Science Student</div>
+          <h1>Hi, I'm <span class="gradient">Waseem Hussain Bhat.</span></h1>
+          <p>
+            A computer science student who enjoys coding, solving problems, managing projects,
+            and turning ideas into practical digital experiences.
+          </p>
+          <div class="cta">
+            <a class="btn primary" href="#projects">View My Work</a>
+            <a class="btn secondary" href="mailto:waseembhat8493@gmail.com">Let's Connect</a>
+          </div>
+        </div>
+
+        <div class="profile-wrap reveal">
+          <div class="orb"></div>
+          <div class="profile-card">
+            <img src="profile.jpg" alt="Portrait of Waseem Hussain Bhat" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">About me</div>
+          <h2>Curious by nature.<br>Problem solver by choice.</h2>
+        </div>
+        <div class="about-grid">
+          <div class="card reveal">
+            <p class="about-text">
+              I'm Waseem Hussain Bhat, currently pursuing a B.Sc. in Computer Science.
+              I completed my schooling in Kashmir and am building my skills through hands-on
+              coding, web development, and small game projects. I enjoy taking a problem,
+              breaking it down, and working toward a clean, useful solution.
+            </p>
+          </div>
+          <div class="facts reveal">
+            <div class="card fact"><strong>B.Sc. in Computer Science</strong><span class="muted">Current studies</span></div>
+            <div class="card fact"><strong>Web Development</strong><span class="muted">Project experience</span></div>
+            <div class="card fact"><strong>Problem Solving</strong><span class="muted">Core strength</span></div>
+            <div class="card fact"><strong>Management</strong><span class="muted">Planning & execution</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Skills</div>
+          <h2>What I bring to a project.</h2>
+        </div>
+        <div class="skills">
+          <div class="skill reveal"><div class="skill-icon">⌘</div><h3>Problem Solving</h3><p>Breaking complex challenges into clear, workable steps.</p></div>
+          <div class="skill reveal"><div class="skill-icon">⌘</div><h3>Web Development</h3><p>Building responsive websites and experimenting with modern interfaces.</p></div>
+          <div class="skill reveal"><div class="skill-icon">◈</div><h3>Programming</h3><p>Developing my coding fundamentals through projects and practice.</p></div>
+          <div class="skill reveal"><div class="skill-icon">✦</div><h3>Management</h3><p>Organizing tasks, priorities, and project work effectively.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Projects</div>
+          <h2>A few things I've built.</h2>
+        </div>
+        <div class="projects">
+          <article class="card project reveal">
+            <div>
+              <div class="project-tag">WEB PROJECT</div>
+              <h3>Website Development</h3>
+              <p>Hands-on website-making projects focused on creating functional and engaging web experiences.</p>
+            </div>
+            <div class="project-footer"><span class="muted">Web • UI • Coding</span><span class="project-link">↗</span></div>
+          </article>
+          <article class="card project reveal">
+            <div>
+              <div class="project-tag">GAME PROJECT</div>
+              <h3>Small Gaming Projects</h3>
+              <p>Small game experiments built to practice programming logic, interaction, and creative problem solving.</p>
+            </div>
+            <div class="project-footer"><span class="muted">Logic • Interaction • Fun</span><span class="project-link">↗</span></div>
+          </article>
+          <article class="card project reveal">
+            <div>
+              <div class="project-tag">PORTFOLIO</div>
+              <h3>Personal Portfolio</h3>
+              <p>A responsive personal site designed to showcase my learning journey, capabilities, and future work.</p>
+            </div>
+            <div class="project-footer"><span class="muted">Responsive • Personal Brand</span><span class="project-link">↗</span></div>
+          </article>
+          <article class="card project reveal">
+            <div>
+              <div class="project-tag">COMING NEXT</div>
+              <h3>More Projects Ahead</h3>
+              <p>Continuously exploring new ideas in software, web development, and creative coding.</p>
+            </div>
+            <div class="project-footer"><span class="muted">Learning • Building • Growing</span><span class="project-link">+</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Education</div>
+          <h2>My learning journey.</h2>
+        </div>
+        <div class="card reveal">
+          <div class="timeline">
+            <div class="timeline-item">
+              <h3>B.Sc. in Computer Science</h3>
+              <p class="muted">Current — Developing skills in programming, computer science, problem solving, and project work.</p>
+            </div>
+            <div class="timeline-item">
+              <h3>Schooling in Kashmir</h3>
+              <p class="muted">Completed school education in Kashmir, building the foundation for my journey in technology.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact reveal">
+          <div>
+            <div class="kicker">Contact</div>
+            <h2>Let's build something useful.</h2>
+            <p class="muted" style="margin-top:10px">I'm always interested in learning, collaborating, and working on interesting ideas.</p>
+          </div>
+          <div class="contact-links">
+            <a href="mailto:waseembhat8493@gmail.com">Email</a>
+            <a href="https://instagram.com/bhaat_waseem_3_1_3" target="_blank" rel="noopener">@bhaat_waseem_3_1_3</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Waseem Hussain Bhat. Built with curiosity and code.
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    const menu = document.getElementById('menu');
+    const nav = document.getElementById('navlinks');
+
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 12);
+    });
+
+    menu.addEventListener('click', () => nav.classList.toggle('open'));
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12});
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
